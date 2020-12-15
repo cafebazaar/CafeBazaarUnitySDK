@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Cafebazaar/Demo/LoginAndStorage/LoginAndStorage.unity
-    guid: 524f933adc790534f87f8f5df128ca58
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
