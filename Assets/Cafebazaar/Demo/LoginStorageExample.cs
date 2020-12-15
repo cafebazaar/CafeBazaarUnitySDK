@@ -68,14 +68,14 @@ public class LoginStorageExample : MonoBehaviour
     public void SetKey()
     {
         string data = Random.Range(0, 1000).ToString();
-        //CafeBazaarSaeed.Storage.SetString("Data1", data);
-        Log("Bazaar Storage : Set Data1 -> " + data);
-
         BazaarGamesPlatform.Instance.SavedGame.SetString("Data1", data);
+        Log("Bazaar Storage : Set Data1 -> " + data);
     }
 
     public void GetKey()
     {
+        var savedGameClient = BazaarGamesPlatform.Instance.SavedGame;
+        string value1 = savedGameClient.GetString("Data1");
         Log("Bazaar Storage > Data1 = " + BazaarGamesPlatform.Instance.SavedGame.GetString("Data1"));
     }
 

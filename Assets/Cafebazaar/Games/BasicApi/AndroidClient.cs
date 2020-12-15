@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using CafeBazaar.Core;
+using CafeBazaar.Core.UI;
 using CafeBazaar.Games.BasicApi;
 using CafeBazaar.Games.BasicApi.SavedGame;
 using UnityEngine;
@@ -39,6 +40,7 @@ namespace CafeBazaar.Games
                                 {
                                     if (storage_result.Status == InitStorageStatus.Success)
                                     {
+                                        CafebazaarLoginUI.Instacne.Show();
                                         isAuthenticated = true;
                                         if (callback != null)
                                             callback(SignInStatus.Success);
@@ -53,6 +55,7 @@ namespace CafeBazaar.Games
                         }
                         else
                         {
+                            CafebazaarLoginUI.Instacne.Show();
                             isAuthenticated = true;
                             if (callback != null)
                                 callback(SignInStatus.Success);
