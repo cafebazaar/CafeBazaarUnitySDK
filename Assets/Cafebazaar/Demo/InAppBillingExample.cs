@@ -4,6 +4,8 @@ using UnityEngine;
 using CafeBazaar;
 using UnityEngine.UI;
 using CafeBazaar.Billing;
+using System.Collections.Generic;
+
 public class InAppBillingExample : MonoBehaviour
 {
     public Text ConsoleText;
@@ -121,6 +123,42 @@ public class InAppBillingExample : MonoBehaviour
 
                 RefreshButtonEnableStatus();
             });
+
+    }
+
+    public void GetPurchases()
+    {
+        BazaarBilling.GetPurchases(
+        (result) =>
+        {
+            if (result.Successful)
+            {
+                List<Purchase> purchases = result.Body;
+
+
+            }
+            else
+            {
+                Log("Failed :" + result.Message);
+            }
+        });
+    }
+    public void GetSkuDetails()
+    {
+        BazaarBilling.GetSkuDetails(new string[] { "Gem1", "Gem2" },
+        (result) =>
+        {
+            if (result.Successful)
+            {
+                List<Product> products = result.Body;
+
+
+            }
+            else
+            {
+                Log("Failed :" + result.Message);
+            }
+        });
     }
 
     public void Log(string message)

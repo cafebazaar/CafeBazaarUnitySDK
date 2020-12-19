@@ -444,7 +444,7 @@ namespace CafeBazaar.Core
                     AccountId = "TEST_MODE";
 
                     IsSignIn = true;
-                    StartCoroutine(IEOnLoginToCafebazaarSuccessfull(OnResult, new SignInResult() { Status = CoreSignInStatus.Success, AccountId = AccountId }));
+                   
                 }
                 else
                 {
@@ -462,7 +462,6 @@ namespace CafeBazaar.Core
             result.Status = CoreSignInStatus.Success;
             result.AccountId = AccountId;
             IsSignIn = true;
-            CafebazaarLoginUI.Instacne.Show();
             RemoveCallback("OnLoginFailed");
             ExecuteCallBack("OnLoginSucceed", result);
         }
@@ -560,6 +559,8 @@ namespace CafeBazaar.Core
             InitStorageResult initStorageResult = new InitStorageResult();
             initStorageResult.Status = InitStorageStatus.Success;
             Storage_LoadData(data);
+            Storage_Is_Syncd = true;
+            Storage_Is_Syncing = false;
             StorageIsInit = true;
             lastChangeStorage = Time.unscaledTime;
 
@@ -697,6 +698,10 @@ namespace CafeBazaar.Core
                             Storage_Is_Syncd = false;
                             Storage_Is_Syncing = true;
                         }
+                    }
+                    else
+                    {
+                        yield return new WaitForSecondsRealtime(3);
                     }
 
                 }
