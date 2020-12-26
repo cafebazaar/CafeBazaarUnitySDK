@@ -3,10 +3,7 @@ namespace CafeBazaar.Games.BasicApi.SavedGame
 {
     public class AndroidSavedGameClient : ISavedGameClient
     {
-        public bool Syncd { get { return CafeBazaarManager.Instacne.Storage_Is_Syncd; } }
-        public bool Syncing { get { return CafeBazaarManager.Instacne.Storage_Is_Syncing; } }
-        public bool IsInited { get { return CafeBazaarManager.Instacne.StorageIsInit; } }
-
+        public bool IsSynced { get { return CafeBazaarManager.Instacne.Storage_Is_Synced; } }
         public void Clear()
         {
             CafeBazaarManager.Instacne.Storage_Clear();
@@ -77,5 +74,6 @@ namespace CafeBazaar.Games.BasicApi.SavedGame
         {
             SetString(key, value.ToString());
         }
+
     }
 }

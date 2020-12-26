@@ -19,5 +19,7 @@
         void SetInt(string key, int value);
         void SetString(string key, string value);
         void SetBool(string key, bool value);
+
+        bool IsSynced { get; }
     }
 }

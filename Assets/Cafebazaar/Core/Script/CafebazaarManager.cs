@@ -475,7 +475,7 @@ namespace CafeBazaar.Core
         #endregion
         #region STORAGE System
         public bool StorageIsInit { get; private set; }
-        public bool Storage_Is_Syncd { get; private set; }
+        public bool Storage_Is_Synced { get; private set; }
         public bool Storage_Is_Syncing { get; private set; }
         private void STORAGE_SetData(string Data, Action<SetStorageResult> OnResult)
         {
@@ -539,7 +539,7 @@ namespace CafeBazaar.Core
                     InitStorageResult result = new InitStorageResult();
                     result.Status = InitStorageStatus.Success;
                     Storage_LoadData(PlayerPrefs.GetString("cafesdk_storage_data", ""));
-                    Storage_Is_Syncd = true;
+                    Storage_Is_Synced = true;
                     Storage_Is_Syncing = false;
                     StorageIsInit = true;
                     if (OnResult != null)
@@ -559,7 +559,7 @@ namespace CafeBazaar.Core
             InitStorageResult initStorageResult = new InitStorageResult();
             initStorageResult.Status = InitStorageStatus.Success;
             Storage_LoadData(data);
-            Storage_Is_Syncd = true;
+            Storage_Is_Synced = true;
             Storage_Is_Syncing = false;
             StorageIsInit = true;
             lastChangeStorage = Time.unscaledTime;
@@ -653,7 +653,7 @@ namespace CafeBazaar.Core
                 yield return new WaitForFixedUpdate();
                 yield return new WaitForFixedUpdate();
 
-                if (!Storage_Is_Syncd && StorageIsInit)
+                if (!Storage_Is_Synced && StorageIsInit)
                 {
                     float _lastChangeStorage = lastChangeStorage;
                     string data_to_save = Storage_CalculateSaveData();
@@ -690,12 +690,12 @@ namespace CafeBazaar.Core
                     {
                         if (_lastChangeStorage == lastChangeStorage)
                         {
-                            Storage_Is_Syncd = true;
+                            Storage_Is_Synced = true;
                             Storage_Is_Syncing = false;
                         }
                         else
                         {
-                            Storage_Is_Syncd = false;
+                            Storage_Is_Synced = false;
                             Storage_Is_Syncing = true;
                         }
                     }
@@ -718,7 +718,7 @@ namespace CafeBazaar.Core
                     if (storageKeyValue[Key] != Value)
                     {
                         Storage_Is_Syncing = true;
-                        Storage_Is_Syncd = false;
+                        Storage_Is_Synced = false;
                         storageKeyValue[Key] = Value;
                         lastChangeStorage = Time.unscaledTime;
                     }
@@ -727,7 +727,7 @@ namespace CafeBazaar.Core
                 {
                     storageKeyValue.Add(Key, Value);
                     Storage_Is_Syncing = true;
-                    Storage_Is_Syncd = false;
+                    Storage_Is_Synced = false;
                     lastChangeStorage = Time.unscaledTime;
                 }
             }
@@ -755,7 +755,7 @@ namespace CafeBazaar.Core
                 {
                     storageKeyValue.Remove(Key);
                     Storage_Is_Syncing = true;
-                    Storage_Is_Syncd = false;
+                    Storage_Is_Synced = false;
                     lastChangeStorage = Time.unscaledTime;
                 }
             }
@@ -770,7 +770,7 @@ namespace CafeBazaar.Core
             {
                 storageKeyValue.Clear();
                 Storage_Is_Syncing = true;
-                Storage_Is_Syncd = false;
+                Storage_Is_Synced = false;
                 lastChangeStorage = Time.unscaledTime;
             }
             else

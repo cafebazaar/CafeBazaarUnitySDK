@@ -3,6 +3,7 @@ using CafeBazaar;
 using UnityEngine.UI;
 using CafeBazaar.Games.BasicApi;
 using CafeBazaar.Games;
+using CafeBazaar.Games.BasicApi.SavedGame;
 
 public class LoginStorageExample : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class LoginStorageExample : MonoBehaviour
 
     public Button Btn_SetKey, Btn_GetKey;
     public Button Btn_SigiIn, Btn_SilentSignIn;
+    public Text LoginStorageStatus;
 
     void Start()
     {
@@ -19,8 +21,23 @@ public class LoginStorageExample : MonoBehaviour
         var config = new BazaarGamesClientConfiguration.Builder().EnableSavedGames().Build();
         BazaarGamesPlatform.InitializeInstance(config);
         BazaarGamesPlatform.Activate();
-    }
 
+
+    }
+    private void Update()
+    {
+        if (BazaarGamesPlatform.Instance.IsAuthenticated())
+        {
+            if (BazaarGamesPlatform.Instance.SavedGame.IsSynced)
+            {
+                LoginStorageStatus.text = "Synced";
+            }
+            else
+            {
+                LoginStorageStatus.text = "Syncing ...";
+            }
+        }
+    }
     private void RefreshButtonEnableStatus()
     {
         Btn_SetKey.interactable = BazaarGamesPlatform.Instance.IsAuthenticated();
@@ -42,7 +59,7 @@ public class LoginStorageExample : MonoBehaviour
             if (response)
                 Log("SignedIn to bazaar AccountId : " + BazaarGamesPlatform.Instance.GetUserId());
             else
-                Log("SignedIn error " );
+                Log("SignedIn error ");
 
             RefreshButtonEnableStatus();
         });
@@ -63,12 +80,14 @@ public class LoginStorageExample : MonoBehaviour
 
             RefreshButtonEnableStatus();
         });
+
     }
 
     public void SetKey()
     {
         string data = Random.Range(0, 1000).ToString();
         BazaarGamesPlatform.Instance.SavedGame.SetString("Data1", data);
+
         Log("Bazaar Storage : Set Data1 -> " + data);
     }
 

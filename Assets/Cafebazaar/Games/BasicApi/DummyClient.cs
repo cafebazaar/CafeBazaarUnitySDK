@@ -2,6 +2,7 @@
 namespace CafeBazaar.Games.BasicApi
 {
     using System;
+    using CafeBazaar.Games.BasicApi.SavedGame;
     using CafeBazaar.Games.OurUtils;
 
     /// <summary>
@@ -12,6 +13,12 @@ namespace CafeBazaar.Games.BasicApi
     /// </remarks>
     public class DummyClient : IBazaarGamesClient
     {
+        private readonly ISavedGameClient mSavedGameClient;
+
+        internal DummyClient()
+        {
+            mSavedGameClient = new AndroidSavedGameClient();
+        }
         /// <summary>
         /// Starts the authentication process.
         /// </summary>
@@ -106,7 +113,7 @@ namespace CafeBazaar.Games.BasicApi
         public SavedGame.ISavedGameClient GetSavedGameClient()
         {
             LogUsage();
-            return null;
+            return mSavedGameClient;
         }
 
         /// <summary>
