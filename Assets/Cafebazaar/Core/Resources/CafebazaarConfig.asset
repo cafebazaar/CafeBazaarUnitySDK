@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ActiveSDK: 1
   InAppPurchase:
-    RSA: 
+    RSA: MIHNMA0GCSqGSIb3DQEBAQUAA4G7ADCBtwKBrwDAB7RzVa+rXjXBMfNQDVSR2nxdTBYqh4CcXBTNUH05nogUsKw2Mrm217MuLwVR6dAhnQZ7eTOWBNIfUBhEfzUAAOmJoAtjPJWHlh4AHFA1KA1Wl9MOpZcvEeL5SuxvM0dvlPazsOS2XpqilusxZli3PxxM6jm1U83cJ/kf67tciAbsy8wXK6xhAykzFCdo7gmBn9DPusp4BapCNLV9XQGtS7bKZmXlNsex+3q0ywUCAwEAAQ==
     Products:
     - ProductId: test
       Price: 

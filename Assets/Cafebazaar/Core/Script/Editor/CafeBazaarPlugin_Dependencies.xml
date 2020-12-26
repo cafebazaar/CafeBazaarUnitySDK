@@ -1,6 +1,6 @@
 <dependencies>
   <androidPackages>
-    <androidPackage spec="com.farsitel.bazaar:auth:1.0.0-alpha05"/>
+    <androidPackage spec="com.farsitel.bazaar:auth:1.0.0-alpha06"/>
     <androidPackage spec="androidx.lifecycle:lifecycle-extensions:2.2.0"/>
     <androidPackage spec="androidx.appcompat:appcompat:1.0.2"/>
     <androidPackage spec="com.google.android.material:material:1.0.0"/>
