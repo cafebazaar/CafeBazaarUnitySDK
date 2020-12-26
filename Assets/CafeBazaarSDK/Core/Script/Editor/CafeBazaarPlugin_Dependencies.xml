@@ -1,0 +1,12 @@
+<dependencies>
+  <androidPackages>
+    <androidPackage spec="com.farsitel.bazaar:auth:1.0.0-alpha06"/>
+    <androidPackage spec="androidx.lifecycle:lifecycle-extensions:2.2.0"/>
+    <androidPackage spec="androidx.appcompat:appcompat:1.0.2"/>
+    <androidPackage spec="com.google.android.material:material:1.0.0"/>
+    <androidPackage spec="androidx.cardview:cardview:1.0.0"/>
+    <androidPackage spec="androidx.constraintlayout:constraintlayout:1.1.2"/>
+    <androidPackage spec="org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.41"/>
+    <androidPackage spec="nl.dionsegijn:konfetti:1.1.2"/>
+  </androidPackages>
+</dependencies>
