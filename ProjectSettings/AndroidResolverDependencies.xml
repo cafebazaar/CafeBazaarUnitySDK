@@ -4,7 +4,7 @@
     <package>androidx.cardview:cardview:1.0.0</package>
     <package>androidx.constraintlayout:constraintlayout:1.1.2</package>
     <package>androidx.lifecycle:lifecycle-extensions:2.2.0</package>
-    <package>com.farsitel.bazaar:auth:1.0.0-alpha05</package>
+    <package>com.farsitel.bazaar:auth:1.0.0-alpha06</package>
     <package>com.google.android.material:material:1.0.0</package>
     <package>nl.dionsegijn:konfetti:1.1.2</package>
     <package>org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.41</package>
@@ -51,7 +51,7 @@
     <file>Assets/Plugins/Android/androidx.vectordrawable.vectordrawable-animated-1.0.0.aar</file>
     <file>Assets/Plugins/Android/androidx.versionedparcelable.versionedparcelable-1.1.0.aar</file>
     <file>Assets/Plugins/Android/androidx.viewpager.viewpager-1.0.0.aar</file>
-    <file>Assets/Plugins/Android/com.farsitel.bazaar.auth-1.0.0-alpha05.aar</file>
+    <file>Assets/Plugins/Android/com.farsitel.bazaar.auth-1.0.0-alpha06.aar</file>
     <file>Assets/Plugins/Android/com.google.android.material.material-1.0.0.aar</file>
     <file>Assets/Plugins/Android/nl.dionsegijn.konfetti-1.1.2.aar</file>
     <file>Assets/Plugins/Android/org.jetbrains.annotations-13.0.jar</file>
