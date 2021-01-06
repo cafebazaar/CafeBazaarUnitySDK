@@ -635,10 +635,12 @@ namespace CafeBazaar.Core
                 try { json = JSONNode.Parse(Data).AsObject; } catch { json = new JSONClass(); }
 
                 storageKeyValue.Clear();
-                foreach (JSONClass i in json["keys"].AsArray)
-                {
-                    storageKeyValue.Add(i["k"].Value, i["v"].Value);
-                }
+
+                if(json["keys"] != null )
+                    foreach (JSONClass i in json["keys"].AsArray)
+                    {
+                        storageKeyValue.Add(i["k"].Value, i["v"].Value);
+                    }
             }
             else
             {
