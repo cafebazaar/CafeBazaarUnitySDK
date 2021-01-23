@@ -84,6 +84,9 @@ namespace CafeBazaar.Core
 
                 using (AndroidJavaClass pluginClass = new AndroidJavaClass("com.farsitel.bazaar.BazaarBridge"))
                     bazaarBridgePlugin = pluginClass.CallStatic<AndroidJavaObject>("instance");
+
+
+                EnableLogging(true);
 #endif
             }
         }
@@ -275,7 +278,12 @@ namespace CafeBazaar.Core
 #endif
             }
         }
-
+        public void EnableLogging(bool enable)
+        {
+#if UNITY_ANDROID
+            mPlugin.Call("enableLogging", enable);
+#endif
+        }
         public void IAB_ConsumeProduct(string Sku, Action<ConsumeResult> OnResult)
         {
             if (!Application.isEditor)
@@ -444,7 +452,7 @@ namespace CafeBazaar.Core
                     AccountId = "TEST_MODE";
 
                     IsSignIn = true;
-                   
+
                 }
                 else
                 {
@@ -484,7 +492,7 @@ namespace CafeBazaar.Core
                 if (Application.platform == RuntimePlatform.Android)
                 {
 #if UNITY_ANDROID
-                    Debug.Log("STORAGE_SetData : " + Data);
+                    //Debug.Log("STORAGE_SetData : " + Data);
                     RegisterCallBack("OnSaveDataSucceed", (x) => { OnResult((SetStorageResult)x); });
                     RegisterCallBack("OnSaveDataFailed", (x) => { OnResult((SetStorageResult)x); });
 
@@ -580,7 +588,7 @@ namespace CafeBazaar.Core
         {
             SetStorageResult setStorageResult = new SetStorageResult();
             setStorageResult.Status = SetStorageStatus.Success;
-            Debug.Log("OnSaveDataSucceed " + data);
+            //Debug.Log("OnSaveDataSucceed " + data);
             RemoveCallback("OnSaveDataFailed");
             ExecuteCallBack("OnSaveDataSucceed", setStorageResult);
         }
@@ -589,7 +597,7 @@ namespace CafeBazaar.Core
             SetStorageResult setStorageResult = new SetStorageResult();
             setStorageResult.Status = SetStorageStatus.Failed;
             setStorageResult.Message = error;
-            Debug.Log("OnSaveDataFailed " + error);
+            //Debug.Log("OnSaveDataFailed " + error);
             RemoveCallback("OnSaveDataSucceed");
             ExecuteCallBack("OnSaveDataFailed", setStorageResult);
         }
@@ -636,7 +644,7 @@ namespace CafeBazaar.Core
 
                 storageKeyValue.Clear();
 
-                if(json["keys"] != null )
+                if (json["keys"] != null)
                     foreach (JSONClass i in json["keys"].AsArray)
                     {
                         storageKeyValue.Add(i["k"].Value, i["v"].Value);

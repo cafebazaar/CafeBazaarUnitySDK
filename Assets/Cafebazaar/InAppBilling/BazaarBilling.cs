@@ -19,16 +19,28 @@ namespace CafeBazaar.Billing
         {
             CafeBazaarManager.Instacne.IAB_Init((result) =>
             {
-                if (OnResult != null)
+                if (result.Status == CoreInitStatus.Success)
                 {
-                    if (result.Status == CoreInitStatus.Success)
-                    {
-                        OnResult(BazaarResponse<string>.Success("Success"));
-                    }
-                    else
-                    {
+                    CafeBazaarManager.Instacne.IAB_QueryPurchases(
+                        (res) =>
+                        {
+                            if (res.Status == GetPurchasesStatus.Success)
+                            {
+                                if(OnResult != null)
+                                    OnResult(BazaarResponse<string>.Success("Success"));
+                            }
+                            else
+                            {
+                                if (OnResult != null)
+                                    OnResult(BazaarResponse<string>.Error(res.Message));
+                            }
+                        }
+                        );        
+                }
+                else
+                {
+                    if (OnResult != null)
                         OnResult(BazaarResponse<string>.Error(result.Message));
-                    }
                 }
             });
         }
@@ -41,16 +53,28 @@ namespace CafeBazaar.Billing
         {
             CafeBazaarManager.Instacne.IAB_Init(RSA, (result) =>
             {
-                if (OnResult != null)
+                if (result.Status == CoreInitStatus.Success)
                 {
-                    if (result.Status == CoreInitStatus.Success)
-                    {
-                        OnResult(BazaarResponse<string>.Success("Success"));
-                    }
-                    else
-                    {
+                    CafeBazaarManager.Instacne.IAB_QueryPurchases(
+                        (res) =>
+                        {
+                            if (res.Status == GetPurchasesStatus.Success)
+                            {
+                                if (OnResult != null)
+                                    OnResult(BazaarResponse<string>.Success("Success"));
+                            }
+                            else
+                            {
+                                if (OnResult != null)
+                                    OnResult(BazaarResponse<string>.Error(res.Message));
+                            }
+                        }
+                        );
+                }
+                else
+                {
+                    if (OnResult != null)
                         OnResult(BazaarResponse<string>.Error(result.Message));
-                    }
                 }
             });
         }

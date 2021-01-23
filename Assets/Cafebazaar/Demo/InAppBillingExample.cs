@@ -10,7 +10,7 @@ public class InAppBillingExample : MonoBehaviour
 {
     public Text ConsoleText;
 
-    public Button Btn_InitIAB, Btn_StartPurchase, Btn_ConsumePurchase, Btn_subscribe;
+    public Button Btn_InitIAB, Btn_StartPurchase, Btn_ConsumePurchase, Btn_subscribe,Btn_purchaseList;
 
     void Start()
     {
@@ -25,6 +25,7 @@ public class InAppBillingExample : MonoBehaviour
         Btn_StartPurchase.interactable = BazaarBilling.IsInited;
         Btn_ConsumePurchase.interactable = BazaarBilling.IsInited;
         Btn_subscribe.interactable = BazaarBilling.IsInited;
+        Btn_purchaseList.interactable = BazaarBilling.IsInited;
     }
 
     public void InitIAB()
@@ -44,7 +45,6 @@ public class InAppBillingExample : MonoBehaviour
 
             RefreshButtonEnableStatus();
         });
-
     }
 
     public void Gem1Purchase()
@@ -133,9 +133,21 @@ public class InAppBillingExample : MonoBehaviour
         {
             if (result.Successful)
             {
+                int i = 0;
                 List<Purchase> purchases = result.Body;
+                Log("purchase List : "+purchases.Count);
 
-
+                foreach (Purchase p in purchases)
+                {
+                    i++; 
+                    Log(i+") ProductId: " + p.ProductId);
+                    Log("   OrderId           : " + p.OrderId);
+                    Log("   PurchaseToken     : " + p.PurchaseToken);
+                    Log("   PurchaseTime      : " + p.PurchaseTime);
+                    Log("   DeveloperPayload  : " + p.DeveloperPayload);
+                    Log("   State             : " + p.State.ToString());
+                    Log("   ProductType       : " + p.ProductType.ToString());
+                }
             }
             else
             {

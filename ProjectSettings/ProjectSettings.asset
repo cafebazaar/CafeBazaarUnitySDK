@@ -156,7 +156,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.tetrapuzzle.ob
+    Android: com.tetrapuzzle.bezanbahador
     Standalone: com.bazaar.unitysdk
   buildNumber:
     Standalone: 1
